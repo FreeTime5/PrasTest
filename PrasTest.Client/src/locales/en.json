@@ -1,0 +1,37 @@
+{
+    "common": {
+        "readMore": "Read more",
+        "allNews": "All News",
+        "home": "Home",
+        "news": "News",
+        "adminPanel": "Admin Panel",
+        "login": "Login",
+        "logout": "Logout",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "create": "Create",
+        "title": "Title",
+        "subtitle": "Subtitle",
+        "content": "Content",
+        "imageUrl": "Image URL",
+        "isPublished": "Is Published"
+    },
+    "validation": {
+        "required": "This field is required",
+        "invalidUrl": "Please enter a valid URL"
+    },
+    "news": {
+        "latestNews": "Latest News",
+        "noNews": "No news available",
+        "createNews": "Create News",
+        "editNews": "Edit News",
+        "newsList": "News List"
+    },
+    "admin": {
+        "email": "Email",
+        "password": "Password",
+        "loginToAdmin": "Login to Admin Panel"
+    }
+}

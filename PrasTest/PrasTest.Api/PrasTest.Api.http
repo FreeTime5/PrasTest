@@ -1,0 +1,6 @@
+@PrasTest.Api_HostAddress = http://localhost:5234
+
+GET {{PrasTest.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
