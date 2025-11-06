@@ -16,11 +16,13 @@
         "subtitle": "Подзаголовок",
         "content": "Содержание",
         "imageUrl": "URL изображения",
-        "isPublished": "Опубликовано"
+        "isPublished": "Опубликовано",
+        "total": "Всего"
     },
     "validation": {
         "required": "Это поле обязательно",
-        "invalidUrl": "Пожалуйста, введите корректный URL"
+        "invalidUrl": "Пожалуйста, введите корректный URL",
+        "invalidEmail": "Пожалуйста, введите корректный email"
     },
     "news": {
         "latestNews": "Последние новости",

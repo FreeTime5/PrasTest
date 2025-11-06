@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { Typography, Image, Spin, Alert, Space, Card } from 'antd';
+import { CalendarOutlined, EditOutlined } from '@ant-design/icons';
 import type { NewsDto } from '../../types';
 import { newsApi } from '../../services/api';
+
+const { Title, Paragraph, Text } = Typography;
 
 const NewsDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -28,39 +32,71 @@ const NewsDetailPage: React.FC = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="loading">Loading...</div>;
+    return (
+      <div style={{ textAlign: 'center', padding: '50px' }}>
+        <Spin size="large" />
+      </div>
+    );
   }
 
   if (!news) {
-    return <div className="error">News not found</div>;
+    return (
+      <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>
+        <Alert
+          message="Error"
+          description="News not found"
+          type="error"
+          showIcon
+        />
+      </div>
+    );
   }
 
+  const isUpdated = news.updatedAt !== news.createdAt;
+
   return (
-    <div className="news-detail-page">
-      <article className="news-article">
-        <img src={news.imageUrl} alt={news.title} className="article-image" />
+    <div style={{ padding: '24px', maxWidth: '900px', margin: '0 auto' }}>
+      <Card>
+        <Image
+          src={news.imageUrl}
+          alt={news.title}
+          style={{ width: '100%', marginBottom: '24px', borderRadius: '8px' }}
+          preview={false}
+        />
         
-        <div className="article-content">
-          <h1 className="article-title">{news.title}</h1>
-          <p className="article-subtitle">{news.subtitle}</p>
-          
-          <div className="article-meta">
-            <time dateTime={news.createdAt}>
-              {new Date(news.createdAt).toLocaleDateString()}
-            </time>
-            {news.updatedAt !== news.createdAt && (
-              <span className="updated">
-                (Updated: {new Date(news.updatedAt).toLocaleDateString()})
-              </span>
-            )}
+        <Space direction="vertical" size="large" style={{ width: '100%' }}>
+          <div>
+            <Title level={1}>{news.title}</Title>
+            <Paragraph style={{ fontSize: '18px', color: '#666' }}>
+              {news.subtitle}
+            </Paragraph>
           </div>
+          
+          <Space>
+            <CalendarOutlined />
+            <Text type="secondary">
+              {new Date(news.createdAt).toLocaleDateString()}
+            </Text>
+            {isUpdated && (
+              <>
+                <EditOutlined />
+                <Text type="secondary" style={{ fontSize: '12px' }}>
+                  Updated: {new Date(news.updatedAt).toLocaleDateString()}
+                </Text>
+              </>
+            )}
+          </Space>
 
           <div 
-            className="article-text"
+            style={{ 
+              fontSize: '16px', 
+              lineHeight: '1.8',
+              marginTop: '16px'
+            }}
             dangerouslySetInnerHTML={{ __html: news.content }}
           />
-        </div>
-      </article>
+        </Space>
+      </Card>
     </div>
   );
 };

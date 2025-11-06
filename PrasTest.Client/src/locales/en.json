@@ -16,11 +16,13 @@
         "subtitle": "Subtitle",
         "content": "Content",
         "imageUrl": "Image URL",
-        "isPublished": "Is Published"
+        "isPublished": "Is Published",
+        "total": "Total"
     },
     "validation": {
         "required": "This field is required",
-        "invalidUrl": "Please enter a valid URL"
+        "invalidUrl": "Please enter a valid URL",
+        "invalidEmail": "Please enter a valid email"
     },
     "news": {
         "latestNews": "Latest News",
